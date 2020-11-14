@@ -35,6 +35,7 @@ h3 {
 }
 h4 {
 	font-weight: bold;
+	font-size: 2rem;
 }
 a {
 	font-size: 1.1rem;
