@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import styled from 'styled-components';
-import {useHistory} from 'react-router-dom';
-import {MovieState} from "../movieState";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { useHistory } from "react-router-dom";
+import { MovieState } from "../movieState";
 //Animation
 import { motion } from "framer-motion";
 import { pageAnimation } from "../animation";
@@ -13,37 +13,41 @@ const MovieDetail = (props) => {
 	const [movie, setMovie] = useState(null);
 
 	useEffect(() => {
-		const currentMovie = movies.filter(item => item.url === url);
+		const currentMovie = movies.filter((item) => item.url === url);
 		setMovie(currentMovie[0]);
-	}, [url, movies])
+	}, [url, movies]);
 	return (
 		<>
-			{movie &&
-			(<Details variants={pageAnimation}
-			          initial="hidden"
-			          animate="show"
-			          exit="exit">
-				<HeadLine>
-					<h2>{movie.title}</h2>
-					<img src={movie.mainImg} alt={movie.title}/>
-				</HeadLine>
-				<Awards>
-					{movie.awards.map(award => (
-						<Award title={award.title}
-						       description={award.description}
-						       key={award.title}/>
-					))}
-				</Awards>
-				<ImageDisplay>
-					<img src={movie.secondaryImg} alt="secondary image"/>
-				</ImageDisplay>
-			</Details>)}
+			{movie && (
+				<Details
+					variants={pageAnimation}
+					initial="hidden"
+					animate="show"
+					exit="exit"
+				>
+					<HeadLine>
+						<h2>{movie.title}</h2>
+						<img src={movie.mainImg} alt={movie.title} />
+					</HeadLine>
+					<Awards>
+						{movie.awards.map((award) => (
+							<Award
+								title={award.title}
+								description={award.description}
+								key={award.title}
+							/>
+						))}
+					</Awards>
+					<ImageDisplay>
+						<img src={movie.secondaryImg} alt="secondary" />
+					</ImageDisplay>
+				</Details>
+			)}
 		</>
 	);
 };
 const Details = styled(motion.div)`
-	color:#ffffff;
-	
+	color: #ffffff;
 `;
 const HeadLine = styled.div`
 	min-height: 90vh;
@@ -59,7 +63,6 @@ const HeadLine = styled.div`
 		width: 100%;
 		height: 70vh;
 		object-fit: cover;
-		
 	}
 `;
 const Awards = styled.div`
@@ -79,15 +82,15 @@ const ImageDisplay = styled.div`
 `;
 
 //Award Component
-const Award = ({title, description}) => {
+const Award = ({ title, description }) => {
 	return (
 		<AwardStyle>
 			<h3>{title}</h3>
-			<div className="line"/>
+			<div className="line" />
 			<p>{description}</p>
 		</AwardStyle>
-	)
-}
+	);
+};
 //Styling
 const AwardStyle = styled.div`
 	padding: 5rem;
@@ -97,7 +100,7 @@ const AwardStyle = styled.div`
 	.line {
 		width: 100%;
 		background-color: #23d997;
-		height: .5rem;
+		height: 0.5rem;
 		margin: 1rem 0;
 	}
 	p {

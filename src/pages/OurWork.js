@@ -12,6 +12,7 @@ import {
 	slider,
 	sliderContainer,
 } from "../animation";
+import { useScroll } from "../hooks/useScroll";
 
 const OurWork = (props) => {
 	return (
@@ -28,8 +29,18 @@ const OurWork = (props) => {
 				<Frame3 variants={slider} />
 				<Frame4 variants={slider} />
 			</motion.div>
-			{MovieState().map((movie) => (
-				<Movie key={movie.url}>
+			{MovieState().map((movie, i) => (
+				<Movie
+					key={movie.url}
+					{...(i > 0
+						? {
+								variants: fade,
+								ref: movie.scrollAnim[0],
+								animate: movie.scrollAnim[1],
+								initial: "hidden",
+						  }
+						: {})}
+				>
 					<motion.h2 variants={fade}>{movie.title}</motion.h2>
 					<motion.div variants={lineAnimation} className="line" />
 					<Link to={movie.url}>
@@ -51,7 +62,7 @@ const Work = styled(motion.div)`
 	overflow: hidden;
 	padding: 5rem 10rem;
 `;
-const Movie = styled.div`
+const Movie = styled(motion.div)`
 	padding-bottom: 10rem;
 	h2 {
 		padding: 1rem 0;

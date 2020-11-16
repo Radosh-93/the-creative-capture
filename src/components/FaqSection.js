@@ -4,12 +4,20 @@ import { Wrapper } from "../styles";
 import { FaqQuestions } from "../movieState";
 import FaqQuestion from "./FaqQuestion";
 import { AnimateSharedLayout } from "framer-motion";
+import { useScroll } from "../hooks/useScroll";
+import { scrollReveal } from "../animation";
 
 const FaqSection = (props) => {
+	const [element, controls] = useScroll();
 	const [questions, setQuestions] = useState(FaqQuestions);
 	return (
 		<div className={"faq"}>
-			<Faq>
+			<Faq
+				variants={scrollReveal}
+				animate={controls}
+				initial="hidden"
+				ref={element}
+			>
 				<h2>
 					Any Question <span>FAQ</span>
 				</h2>

@@ -1,6 +1,6 @@
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-const greenColor = '#23d997';
+const greenColor = "#23d997";
 
 const GlobalStyles = createGlobalStyle`
 * {
@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
 body {
     background-color: #1b1b1b;
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden
 }
 button {
 	font-family: 'Inter', sans-serif;
@@ -50,5 +51,5 @@ p {
 	font-size: 1.4rem;
 	line-height: 1.5;
 }
-`
+`;
 export default GlobalStyles;

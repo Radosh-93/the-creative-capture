@@ -5,6 +5,7 @@ import theracer from "./img/theracer-small.png";
 import athlete2 from "./img/athlete2.png";
 import goodtimes2 from "./img/good-times2.jpg";
 import theracer2 from "./img/the-racer2.jpg";
+import { useScroll } from "./hooks/useScroll";
 
 export const MovieState = () => {
 	return [
@@ -13,6 +14,7 @@ export const MovieState = () => {
 			mainImg: athlete,
 			secondaryImg: athlete2,
 			url: "/work/the-athlete",
+			scrollAnim: [],
 			awards: [
 				{
 					title: "Truly A masterpiece",
@@ -36,6 +38,7 @@ export const MovieState = () => {
 			mainImg: goodtimes,
 			url: "/work/good-times",
 			secondaryImg: goodtimes2,
+			scrollAnim: useScroll(),
 			awards: [
 				{
 					title: "Truly A masterpiece",
@@ -59,6 +62,7 @@ export const MovieState = () => {
 			mainImg: theracer,
 			url: "/work/the-racer",
 			secondaryImg: theracer2,
+			scrollAnim: useScroll(),
 			awards: [
 				{
 					title: "Truly A masterpiece",
