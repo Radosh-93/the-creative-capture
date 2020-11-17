@@ -9,7 +9,7 @@ import { pageAnimation } from "../animation";
 const MovieDetail = (props) => {
 	const history = useHistory();
 	const url = history.location.pathname;
-	const [movies, setMovies] = useState(MovieState);
+	const [movies] = useState(MovieState);
 	const [movie, setMovie] = useState(null);
 
 	useEffect(() => {
@@ -48,16 +48,13 @@ const MovieDetail = (props) => {
 };
 const Details = styled(motion.div)`
 	color: #ffffff;
+	padding: 3rem 0;
 `;
 const HeadLine = styled.div`
 	min-height: 90vh;
-	padding-top: 20vh;
-	position: relative;
 	h2 {
-		position: absolute;
-		top: 10%;
-		left: 50%;
-		transform: translate(-50%, -10%);
+		padding: 2rem 0;
+		text-align: center;
 	}
 	img {
 		width: 100%;
@@ -71,13 +68,23 @@ const Awards = styled.div`
 	margin: 5rem 10rem;
 	align-items: center;
 	justify-content: space-around;
+	@media screen and (max-width: 1020px) {
+		margin: 1rem;
+		flex-direction: column;
+	}
 `;
 const ImageDisplay = styled.div`
 	min-height: 50vh;
+	@media screen and (max-width: 1020px) {
+		min-height: 1px;
+	}
 	img {
 		width: 100%;
 		height: 100vh;
 		object-fit: cover;
+		@media screen and (max-width: 1020px) {
+			height: 100%;
+		}
 	}
 `;
 

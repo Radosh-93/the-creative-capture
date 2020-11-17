@@ -75,6 +75,9 @@ const Services = styled(Wrapper)`
 const Cards = styled.div`
 	display: flex;
 	flex-wrap: wrap;
+	@media screen and (max-width: 1020px) {
+		justify-content: space-around;
+	}
 `;
 const Card = styled.div`
 	flex-basis: 20rem;

@@ -13,8 +13,13 @@ import {
 	sliderContainer,
 } from "../animation";
 import { useScroll } from "../hooks/useScroll";
+import ScrollTop from "../components/ScrollTop";
 
 const OurWork = (props) => {
+	const scrollHooks = {
+		elemContr1: useScroll(),
+		elemContr2: useScroll(),
+	};
 	return (
 		<Work
 			variants={pageAnimation}
@@ -29,31 +34,34 @@ const OurWork = (props) => {
 				<Frame3 variants={slider} />
 				<Frame4 variants={slider} />
 			</motion.div>
-			{MovieState().map((movie, i) => (
-				<Movie
-					key={movie.url}
-					{...(i > 0
-						? {
-								variants: fade,
-								ref: movie.scrollAnim[0],
-								animate: movie.scrollAnim[1],
-								initial: "hidden",
-						  }
-						: {})}
-				>
-					<motion.h2 variants={fade}>{movie.title}</motion.h2>
-					<motion.div variants={lineAnimation} className="line" />
-					<Link to={movie.url}>
-						<Hide>
-							<motion.img
-								variants={photoAnimation}
-								src={movie.mainImg}
-								alt={movie.title}
-							/>
-						</Hide>
-					</Link>
-				</Movie>
-			))}
+			{MovieState().map((movie, i) => {
+				return (
+					<Movie
+						key={movie.url}
+						{...(i > 0
+							? {
+									variants: fade,
+									ref: scrollHooks["elemContr" + i][0],
+									animate: scrollHooks["elemContr" + i][1],
+									initial: "hidden",
+							  }
+							: {})}
+					>
+						<motion.h2 variants={fade}>{movie.title}</motion.h2>
+						<motion.div variants={lineAnimation} className="line" />
+						<Link to={movie.url}>
+							<Hide>
+								<motion.img
+									variants={photoAnimation}
+									src={movie.mainImg}
+									alt={movie.title}
+								/>
+							</Hide>
+						</Link>
+					</Movie>
+				);
+			})}
+			<ScrollTop />
 		</Work>
 	);
 };
@@ -61,9 +69,12 @@ const Work = styled(motion.div)`
 	min-height: 100vh;
 	overflow: hidden;
 	padding: 5rem 10rem;
+	@media screen and (max-width: 1020px) {
+		padding: 1rem;
+	}
 `;
 const Movie = styled(motion.div)`
-	padding-bottom: 10rem;
+	padding-bottom: 5rem;
 	h2 {
 		padding: 1rem 0;
 	}

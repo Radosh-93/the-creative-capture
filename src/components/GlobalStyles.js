@@ -8,10 +8,26 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
 }
+//Remove Gray Highlight When Tapping Links in Mobile
+*:active {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+html {
+    @media screen and (max-width: 1700px){
+        font-size: 75%;
+    }
+    @media screen and (max-width: 1270px){
+        font-size: 60%;
+    }
+}
 body {
     background-color: #1b1b1b;
     font-family: 'Inter', sans-serif;
-    overflow-x: hidden
+}
+#root {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
 }
 button {
 	font-family: 'Inter', sans-serif;

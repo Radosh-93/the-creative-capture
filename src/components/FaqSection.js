@@ -9,7 +9,7 @@ import { scrollReveal } from "../animation";
 
 const FaqSection = (props) => {
 	const [element, controls] = useScroll();
-	const [questions, setQuestions] = useState(FaqQuestions);
+	const [questions] = useState(FaqQuestions);
 	return (
 		<div className={"faq"}>
 			<Faq

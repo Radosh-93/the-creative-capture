@@ -25,5 +25,6 @@ const WaveSvg = styled.svg`
 	position: absolute;
 	left: 0;
 	z-index: 1;
+	top: 40vh;
 `;
 export default Wave;
